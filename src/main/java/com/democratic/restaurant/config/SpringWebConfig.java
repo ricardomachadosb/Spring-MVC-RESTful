@@ -1,4 +1,4 @@
-package com.mkyong.helloworld.config;
+package com.democratic.restaurant.config;
  
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,9 +9,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
  
+/**
+ * @author Ricardo Machado
+ *
+ */
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.mkyong.helloworld.web" })
+@ComponentScan( basePackages = {"com.democratic.restaurant"})
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
  
 	@Override

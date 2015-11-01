@@ -1,17 +1,13 @@
-package com.mkyong.helloworld.servlet3;
+package com.democratic.restaurant.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import com.mkyong.helloworld.config.SpringRootConfig;
-import com.mkyong.helloworld.config.SpringWebConfig;
-
+/**
+ * @author Ricardo Machado
+ *
+ */
 public class MyWebInitializer extends
 		AbstractAnnotationConfigDispatcherServletInitializer {
-
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { SpringRootConfig.class };
-	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
@@ -21,6 +17,11 @@ public class MyWebInitializer extends
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
+	}
+	
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return new Class[] { SecurityConfig.class };
 	}
 
 }

@@ -3,7 +3,6 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 //apply plugin: 'jetty'
 apply plugin: 'org.akhikhl.gretty'
-
 buildscript {
   repositories {
     jcenter()
@@ -16,13 +15,13 @@ buildscript {
 
 gretty {
   port = 8080
-  contextPath = 'spring4'
+  contextPath = ''
   servletContainer = 'jetty9'
 }
 
-// JDK 7
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+// JDK 8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenLocal()
@@ -34,6 +33,8 @@ dependencies {
 	compile 'ch.qos.logback:logback-classic:1.1.3'
 	compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
 	compile 'javax.servlet:jstl:1.2'
+	compile 'org.springframework.security:spring-security-web:4.0.2.RELEASE'
+	compile 'org.springframework.security:spring-security-config:4.0.2.RELEASE'
 	
 	//include in compile only, exclude in the war
 	providedCompile 'javax.servlet:servlet-api:2.5'
@@ -47,7 +48,7 @@ eclipse {
     component {
       
       //define context path, default to project folder name
-      contextPath = 'spring4'
+      contextPath = ''
       
     }
     
