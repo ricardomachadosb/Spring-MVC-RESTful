@@ -6,6 +6,7 @@
 .gradle/
 .project
 .classpath
+/src/main/webapp/resources/core/libs
 
 # Package Files #
 *.jar
