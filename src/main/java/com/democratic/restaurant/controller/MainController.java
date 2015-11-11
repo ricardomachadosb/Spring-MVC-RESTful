@@ -1,5 +1,6 @@
 package com.democratic.restaurant.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -11,18 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.democratic.restaurant.model.Restaunt;
 import com.democratic.restaurant.service.HelloWorldService;
+import com.democratic.restaurant.service.RestaurantService;
 
 @Controller
-public class WelcomeController {
+public class MainController {
 
-	private final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
-	private final HelloWorldService helloWorldService;
-
+	private final Logger logger = LoggerFactory.getLogger(MainController.class);
+	
 	@Autowired
-	public WelcomeController(HelloWorldService helloWorldService) {
-		this.helloWorldService = helloWorldService;
-	}
+	private HelloWorldService helloWorldService;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Map<String, Object> model) {
@@ -31,6 +34,19 @@ public class WelcomeController {
 
 		model.put("title", helloWorldService.getTitle(""));
 		model.put("msg", helloWorldService.getDesc());
+		
+		List<Restaunt> restaurants = null;
+		
+		try {
+			restaurants = restaurantService.list();
+		}catch(Exception e){
+			
+		}
+		
+		System.out.println(restaurants.size());
+		
+		model.put("restaurants", restaurants);
+		//List<Restaunt> restaurants = 
 		
 		return "index";
 	}

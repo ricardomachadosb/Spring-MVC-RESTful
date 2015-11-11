@@ -3,77 +3,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Gradle + Spring MVC</title>
+<title>Democratic Restaurant</title>
 
-<spring:url value="/resources/core/css/hello.css" var="coreCss" />
-<spring:url value="/resources/core/bootstrap/dist/css/bootstrap.min.css" var="bootstrapCss" />
+<spring:url value="/resources/core/css/core.css" var="coreCss" />
+<spring:url value="/resources/core/libs/bootstrap/dist/css/bootstrap.min.css" var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${coreCss}" rel="stylesheet" />
 </head>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Project Name</a>
-		</div>
-	</div>
-</nav>
-
-<div class="jumbotron">
-	<div class="container">
-		<h1>${title}</h1>
-		<p>
-			<c:if test="${not empty msg}">
-				Hello ${msg}
-			</c:if>
-
-			<c:if test="${empty msg}">
-				Welcome Welcome!
-			</c:if>
-		</p>
-		<p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-		</p>
-	</div>
-</div>
-
 <div class="container">
+    <div class="col-md-4"></div>
 
-	<div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-	</div>
-
-
-	<hr>
-	<footer>
-		<p>&copy; Mkyong.com 2015</p>
-	</footer>
+    <div class="col-md-4">
+         <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-arrow-right"></span>Em qual restaurante você deseja ir hoje?
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    Good
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    Excellent
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    Bed
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    Can Be Improved
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    No Comment
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary btn-sm">
+                        Vote</button>
+                    <a href="#">View Result</a></div>
+            </div>
+    </div>
 </div>
 
-<spring:url value="/resources/core/css/hello.js" var="coreJs" />
-<spring:url value="/resources/core/jquery/dist/jquery.min.js" var="jquery" />
-<spring:url value="/resources/core/bootstrap/dist/js/bootstrap.min.js" var="bootstrapJs" />
-<spring:url value="/resources/core/angular/angular.min.js" var="angularJs" />
+<spring:url value="/resources/core/js/core.js" var="coreJs" />
+<spring:url value="/resources/core/libs/jquery/dist/jquery.min.js" var="jquery" />
+<spring:url value="/resources/core/libs/bootstrap/dist/js/bootstrap.min.js" var="bootstrapJs" />
+<spring:url value="/resources/core/libs/angular/angular.min.js" var="angularJs" />
 
 
 <script src="${coreJs}"></script>

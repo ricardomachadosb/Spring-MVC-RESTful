@@ -1,0 +1,52 @@
+package com.democratic.restaurant.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.democratic.restaurant.dao.RestaurantDao;
+import com.democratic.restaurant.exception.RestaurantException;
+import com.democratic.restaurant.model.Restaunt;
+
+/**
+ * @author Ricardo Machado
+ *
+ */
+@Service
+public class RestaurantService {
+	
+	@Autowired
+	RestaurantDao restaurantDao;
+	
+	private String LIST_DEFAULT_ERROR_MESSAGE = "Problemas ao buscar restaurante cadastrado, tente novamente mais tarde";
+	
+	/**
+	 * @return A list with all restaurants
+	 */
+	public List<Restaunt> list() throws RestaurantException{
+		
+		List<Restaunt> restaurants = null;
+		
+		try {
+			restaurants = restaurantDao.list();
+		}catch(Exception e){
+			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE, e);
+		}
+		
+		validateListResult(restaurants);
+		
+		return restaurants;
+	}
+	
+	/**
+	 * @param restaurants
+	 * @throws RestaurantException
+	 */
+	private void validateListResult(List<Restaunt> restaurants ) throws RestaurantException{
+		
+		if(restaurants == null){
+			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE);
+		}
+	}
+}
