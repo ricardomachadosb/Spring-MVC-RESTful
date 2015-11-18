@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.democratic.restaurant.model.Restaunt;
+import com.democratic.restaurant.model.Restaurant;
 import com.democratic.restaurant.service.HelloWorldService;
 import com.democratic.restaurant.service.RestaurantService;
 
@@ -35,7 +35,7 @@ public class MainController {
 		model.put("title", helloWorldService.getTitle(""));
 		model.put("msg", helloWorldService.getDesc());
 		
-		List<Restaunt> restaurants = null;
+		List<Restaurant> restaurants = null;
 		
 		try {
 			restaurants = restaurantService.list();
@@ -43,10 +43,7 @@ public class MainController {
 			
 		}
 		
-		System.out.println(restaurants.size());
-		
 		model.put("restaurants", restaurants);
-		//List<Restaunt> restaurants = 
 		
 		return "index";
 	}

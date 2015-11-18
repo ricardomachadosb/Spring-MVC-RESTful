@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.democratic.restaurant.dao.RestaurantDao;
 import com.democratic.restaurant.exception.RestaurantException;
-import com.democratic.restaurant.model.Restaunt;
+import com.democratic.restaurant.model.Restaurant;
 
 /**
  * @author Ricardo Machado
@@ -24,9 +24,9 @@ public class RestaurantService {
 	/**
 	 * @return A list with all restaurants
 	 */
-	public List<Restaunt> list() throws RestaurantException{
+	public List<Restaurant> list() throws RestaurantException{
 		
-		List<Restaunt> restaurants = null;
+		List<Restaurant> restaurants = null;
 		
 		try {
 			restaurants = restaurantDao.list();
@@ -43,7 +43,7 @@ public class RestaurantService {
 	 * @param restaurants
 	 * @throws RestaurantException
 	 */
-	private void validateListResult(List<Restaunt> restaurants ) throws RestaurantException{
+	private void validateListResult(List<Restaurant> restaurants ) throws RestaurantException{
 		
 		if(restaurants == null){
 			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE);

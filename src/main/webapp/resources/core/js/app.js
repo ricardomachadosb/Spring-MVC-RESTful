@@ -1,0 +1,1 @@
+angular.module('restaurant', ['ngRoute', 'appRoutes', 'MainCtrl']);

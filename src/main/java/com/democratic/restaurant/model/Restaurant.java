@@ -4,13 +4,15 @@ package com.democratic.restaurant.model;
  * @author Ricardo Machado
  *
  */
-public class Restaunt {
+public class Restaurant {
 	
 	private String name;
 	
-	public Restaunt() {}
+	private int id;
 	
-	public Restaunt(String name){
+	public Restaurant() {}
+	
+	public Restaurant(String name){
 		this.name = name;
 	}
 	
@@ -20,5 +22,13 @@ public class Restaunt {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

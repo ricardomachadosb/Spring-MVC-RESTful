@@ -2,7 +2,7 @@ package com.democratic.restaurant.dao;
 
 import java.util.List;
 
-import com.democratic.restaurant.model.Restaunt;
+import com.democratic.restaurant.model.Restaurant;
 
 /**
  * @author Ricardo Machado
@@ -10,6 +10,6 @@ import com.democratic.restaurant.model.Restaunt;
  */
 public interface RestaurantDao {
 
-	public List<Restaunt> list();
+	public List<Restaurant> list();
 	
 }
