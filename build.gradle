@@ -36,6 +36,9 @@ dependencies {
 	compile 'org.springframework.security:spring-security-web:4.0.2.RELEASE'
 	compile 'org.springframework.security:spring-security-config:4.0.2.RELEASE'
 	
+	compile 'com.fasterxml.jackson.core:jackson-core:2.6.3'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+	
 	//include in compile only, exclude in the war
 	providedCompile 'javax.servlet:servlet-api:2.5'
 	
