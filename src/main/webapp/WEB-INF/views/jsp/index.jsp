@@ -3,12 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>Democratic Restaurant</title>
 	<base href="/">
 	<spring:url value="/resources/core/css/core.css" var="coreCss" />
 	<spring:url value="/resources/core/libs/bootstrap/dist/css/bootstrap.min.css" var="bootstrapCss" />
 	<link href="${bootstrapCss}" rel="stylesheet" />
 	<link href="${coreCss}" rel="stylesheet" />
+	
 </head>
 
 <body ng-app="restaurant" ng-controller="MainController"> 

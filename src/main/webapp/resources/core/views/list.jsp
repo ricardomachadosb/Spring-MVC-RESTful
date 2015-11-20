@@ -14,7 +14,7 @@
                          <div class="radio">
                              <label>
                                  <input type="radio" name="optionsRadios">
-                                 {{restaurant.getName()}}
+                                 {{restaurant.name}}
                              </label>
                          </div>
                      </li>

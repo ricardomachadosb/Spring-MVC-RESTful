@@ -4,7 +4,7 @@
 
         // home page
         .when('/', {
-            templateUrl: 'views/list.html',
+            templateUrl: 'resources/core/views/list.jsp',
             controller: 'MainController'
         });
 

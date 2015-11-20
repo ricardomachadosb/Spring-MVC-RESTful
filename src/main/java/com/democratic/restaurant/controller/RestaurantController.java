@@ -24,7 +24,7 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService restaurantService;
 	
-	@RequestMapping(value = "/api/restaurant/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/restaurant/list", method = RequestMethod.GET, produces={"application/json;charset=UTF-8"})
 	public ResponseEntity<List<Restaurant>> listAllUsers() {
 		
 		List<Restaurant> restaurants = null;
