@@ -15,6 +15,7 @@
 
 <body ng-app="restaurant" ng-controller="MainController"> 
 	<div class="container">
+		<div class="alert {{messageClass}}" role="alert">{{globalMessage}}</div>
 		<div ng-view></div>
 	</div>
 </body>

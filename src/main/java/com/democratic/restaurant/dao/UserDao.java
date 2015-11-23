@@ -8,12 +8,10 @@ import com.democratic.restaurant.model.Restaurant;
  * @author Ricardo Machado
  *
  */
-public interface RestaurantDao {
+public interface UserDao {
 
-	public List<Restaurant> list();
+	public List<String> getUsersWhoVoted();
 	
-	public Restaurant get(Integer id);
-	
-	public void vote(Restaurant restaurant);
+	public void addUserWhoVoted(String userName);
 	
 }
