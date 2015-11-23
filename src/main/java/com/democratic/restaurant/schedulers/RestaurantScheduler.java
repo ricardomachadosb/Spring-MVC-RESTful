@@ -13,7 +13,7 @@ public class RestaurantScheduler {
     private ApplicationContext ctx;
 
     @Scheduled(fixedRate=5000)
-    public void monitorRoom(){
+    public void startNew(){
         System.out.println("--------------------");
     }
 }
