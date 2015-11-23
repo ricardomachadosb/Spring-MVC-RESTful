@@ -7,23 +7,26 @@
                     <span class="glyphicon glyphicon-arrow-right"></span>Em qual restaurante você deseja ir hoje?
                 </h3>
             </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                <div ng-repeat="restaurant in restaurants">
-                 	<li class="list-group-item">
-                         <div class="radio">
-                             <label>
-                                 <input type="radio" name="optionsRadios">
-                                 {{restaurant.name}}
-                             </label>
-                         </div>
-                     </li>
-                 </div>
-                </ul>
-            </div>
-            <div class="panel-footer">
-                <button type="button" class="btn btn-primary btn-sm">
-                    Vote</button>
-                <a href="#">View Result</a></div>
+             <form>
+	            <div class="panel-body">
+	                <ul class="list-group">
+	                <div ng-repeat="restaurant in restaurants">
+	                 	<li class="list-group-item">
+	                         <div class="radio">
+	                             <label>
+	                                 <input type="radio" name="restaurantId" value="{{restaurant.id}}" ng-model="formData.restaurantId">
+	                                 {{restaurant.name}}
+	                             </label>
+	                         </div>
+	                     </li>
+	                 </div>
+	                </ul>
+	            </div>
+	            <div class="panel-footer">
+	                <button type="button" class="btn btn-primary btn-sm"  ng-click="vote()">
+	                    Vote</button>
+	                <a href="#">View Result</a></div>
+            </form>
         </div>
+ 
 </div>

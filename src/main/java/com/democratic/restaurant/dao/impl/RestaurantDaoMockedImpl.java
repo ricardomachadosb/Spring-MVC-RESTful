@@ -34,7 +34,11 @@ public class RestaurantDaoMockedImpl implements RestaurantDao{
 		restaurants.add(new Restaurant("Bom de Prato"));
 		restaurants.add(new Restaurant("Casarão"));
 		restaurants.add(new Restaurant("Panquecas da vovó"));
-		restaurants.add(new Restaurant("Xis do Gordo"));
+		restaurants.add(new Restaurant("Xis do Gordo")); 
+		
+		for(int i = 0; i < restaurants.size(); i++){
+			restaurants.get(i).setId(i);
+		}
 		
 		return restaurants;
 	}
