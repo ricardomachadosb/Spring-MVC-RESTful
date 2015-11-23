@@ -4,9 +4,13 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		
 	$scope.list = function(){
     	$http.get('/api/restaurant/list').success(function(res){
+    		$rootScope.globalMessage = "";
+			$rootScope.messageClass = "";
+			
 			$scope.restaurants = res;
-		}).error(function(res){
-			console.log(res);
+		}).error(function(res, status, headers){
+			$rootScope.globalMessage = headers('message');
+			$rootScope.messageClass = "alert-danger";
  		});
 	};
 	  
@@ -20,7 +24,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			$rootScope.globalMessage = headers('message');
 			$rootScope.messageClass = "alert-success";
 		}).error(function(res, status, headers){
-			console.log(headers('message'));
 			$rootScope.globalMessage = headers('message');
 			$rootScope.messageClass = "alert-danger";
  		});
