@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.democratic.restaurant.dao.RestaurantDao;
-import com.democratic.restaurant.enums.VotingStatusEnum;
 import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
 
@@ -59,7 +58,6 @@ public class RestaurantService {
 	 * @throws RestaurantException
 	 */
 	private void validateListResult(List<Restaurant> restaurants ) throws RestaurantException{
-		
 		if(restaurants == null){
 			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE);
 		}

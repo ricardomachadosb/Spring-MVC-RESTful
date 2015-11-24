@@ -19,6 +19,7 @@ public class RestaurantDaoMockedImpl implements RestaurantDao{
 	
 	private static List<Restaurant> restaurantList = null;
 	private static Map<Integer, Integer> votes = new HashMap<Integer, Integer>();
+	private static List<Restaurant> weekWinners = new ArrayList<Restaurant>();
 
 	/* (non-Javadoc)
 	 * @see com.democratic.restaurant.dao.RestaurantDao#list()
@@ -87,5 +88,15 @@ public class RestaurantDaoMockedImpl implements RestaurantDao{
 	@Override
 	public void clearCurrentVoteData() {
 		votes.clear();
+	}
+
+	@Override
+	public void clearWeekWinnersHistory() {
+		weekWinners.clear();
+	}
+
+	@Override
+	public List<Restaurant> getWeekWinners() {
+		return weekWinners;
 	}
 }

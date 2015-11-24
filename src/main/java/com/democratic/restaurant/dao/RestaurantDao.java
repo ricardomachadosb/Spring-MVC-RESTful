@@ -18,4 +18,8 @@ public interface RestaurantDao {
 	
 	public void clearCurrentVoteData();
 	
+	public void clearWeekWinnersHistory();
+	
+	public List<Restaurant> getWeekWinners();
+	
 }
