@@ -14,4 +14,6 @@ public interface UserDao {
 	
 	public void addUserWhoVoted(String userName);
 	
+	public void clearCurrentVoteData();
+	
 }

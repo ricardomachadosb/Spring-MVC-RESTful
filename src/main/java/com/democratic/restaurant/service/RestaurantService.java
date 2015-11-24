@@ -3,12 +3,10 @@ package com.democratic.restaurant.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.democratic.restaurant.dao.RestaurantDao;
-import com.democratic.restaurant.dao.UserDao;
+import com.democratic.restaurant.enums.VotingStatusEnum;
 import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
 
@@ -21,9 +19,6 @@ public class RestaurantService {
 	
 	@Autowired
 	RestaurantDao restaurantDao;
-	
-	@Autowired
-	UserDao userDao;
 	
 	private String LIST_DEFAULT_ERROR_MESSAGE = "Problemas ao buscar restaurante cadastrado, tente novamente mais tarde";
 	
@@ -60,29 +55,6 @@ public class RestaurantService {
 	}
 	
 	/**
-	 * @param restaurant
-	 * @throws RestaurantException
-	 */
-	public void vote(Restaurant restaurant) throws RestaurantException{
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		if(userAlreadyVoted(auth.getName())){
-			throw new RestaurantException("Você ja votou hoje");
-		}
-		
-		restaurantDao.vote(restaurant);
-		userDao.addUserWhoVoted(auth.getName());
-	}
-	
-	/**
-	 * @param userName
-	 * @return
-	 */
-	private boolean userAlreadyVoted(String userName){
-		return userDao.getUsersWhoVoted().contains(userName);
-	}
-	
-	/**
 	 * @param restaurants
 	 * @throws RestaurantException
 	 */
@@ -92,5 +64,4 @@ public class RestaurantService {
 			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE);
 		}
 	}
-	
 }

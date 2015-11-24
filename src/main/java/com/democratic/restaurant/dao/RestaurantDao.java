@@ -16,4 +16,6 @@ public interface RestaurantDao {
 	
 	public void vote(Restaurant restaurant);
 	
+	public void clearCurrentVoteData();
+	
 }

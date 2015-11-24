@@ -1,15 +1,12 @@
 package com.democratic.restaurant.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
 import com.democratic.restaurant.service.RestaurantService;
+import com.democratic.restaurant.service.VoteService;
 
 /**
  * @author Ricardo Machado
@@ -28,6 +26,9 @@ public class RestaurantController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
+	
+	@Autowired
+	private VoteService voteService;
 	
 	/**
 	 * @return
@@ -61,7 +62,7 @@ public class RestaurantController {
 		
 		try {
 			restaurant = restaurantService.get(id);
-			restaurantService.vote(restaurant);
+			voteService.vote(restaurant);
 			headers.add("message", "Você votou no restaurante " + restaurant.getName());
 		}catch(RestaurantException e){
 			headers.add("message", e.getMessage());

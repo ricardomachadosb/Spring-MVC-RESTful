@@ -83,4 +83,9 @@ public class RestaurantDaoMockedImpl implements RestaurantDao{
 			votes.put(restaurant.getId(), 1);
 		}
 	}
+	
+	@Override
+	public void clearCurrentVoteData() {
+		votes.clear();
+	}
 }

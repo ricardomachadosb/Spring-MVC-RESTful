@@ -6,14 +6,20 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.democratic.restaurant.service.VoteService;
+
 @EnableScheduling
 @Component
 public class RestaurantScheduler {
+	
     @Autowired
     private ApplicationContext ctx;
+    
+    @Autowired
+    private VoteService voteService;
 
-    @Scheduled(fixedRate=5000)
-    public void startNew(){
-        System.out.println("--------------------");
+    @Scheduled(cron="0 0 6 * * ?")
+    public void startNewVote(){
+    	voteService.startNewVote();
     }
 }
