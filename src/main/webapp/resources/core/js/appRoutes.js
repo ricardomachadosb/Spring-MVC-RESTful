@@ -6,6 +6,9 @@
         .when('/', {
             templateUrl: 'resources/core/views/list.jsp',
             controller: 'MainController'
+        }).when('/result', {
+            templateUrl: 'resources/core/views/result.jsp',
+            controller: 'ResultController'
         });
 
     $locationProvider.html5Mode(true);

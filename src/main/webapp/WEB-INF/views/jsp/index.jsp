@@ -28,6 +28,7 @@
 <spring:url value="/resources/core/js/app.js" var="appJs" />
 <spring:url value="/resources/core/js/appRoutes.js" var="appRoutes" />
 <spring:url value="/resources/core/js/controllers/MainCtrl.js" var="mainCtrl" />
+<spring:url value="/resources/core/js/controllers/ResultCtrl.js" var="resultCtrl" />
 
 
 <script src="${coreJs}"></script>
@@ -37,6 +38,7 @@
 <script src="${angularRoute}"></script>
 <script src="${appRoutes}"></script>
 <script src="${mainCtrl}"></script>
+<script src="${resultCtrl}"></script>
 <script src="${appJs}"></script>
 
 </body>

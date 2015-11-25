@@ -24,8 +24,8 @@
 	            </div>
 	            <div class="panel-footer">
 	                <button type="button" class="btn btn-primary btn-sm"  ng-click="vote()">
-	                    Vote</button>
-	                <a href="#">View Result</a></div>
+	                    Votar</button>
+	                <a href="/result">Ver Resultado</a></div>
             </form>
         </div>
  
