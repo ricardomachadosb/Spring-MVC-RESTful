@@ -77,7 +77,7 @@ public class RestaurantService {
 		List<RestaurantData> datas = new ArrayList<RestaurantData>();
 		
 		for(Map.Entry<Restaurant, Integer> entry: map.entrySet()){
-			datas.add(new RestaurantData(entry.getKey(), entry.getValue()));
+			datas.add(0,new RestaurantData(entry.getKey(), entry.getValue()));
 		}
 		
 		return datas;

@@ -80,7 +80,6 @@ public class VoteService {
 	 */
 	public List<RestaurantData> getResultList(){
 		Map<Restaurant, Integer> result = restaurantDao.getResultMap();
-		
 		result = orderResultMapByVotes(result);
 		return restaurantService.buildRestaurantDatas(result);
 	}

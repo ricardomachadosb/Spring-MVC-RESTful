@@ -68,7 +68,6 @@ public class RestaurantController {
 			MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 			headers.add("message", e.getMessage());
 			return new ResponseEntity<List<RestaurantData>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
-			
 		}
 		
 		if (restaurants.isEmpty()) {
