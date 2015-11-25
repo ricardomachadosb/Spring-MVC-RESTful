@@ -2,6 +2,7 @@ package com.democratic.restaurant.dao.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -98,5 +99,16 @@ public class RestaurantDaoMockedImpl implements RestaurantDao{
 	@Override
 	public List<Restaurant> getWeekWinners() {
 		return weekWinners;
+	}
+
+	@Override
+	public Map<Restaurant, Integer> getResultMap() {
+		Map<Restaurant, Integer> resultMap = new LinkedHashMap<Restaurant, Integer>();
+		
+		for(Map.Entry<Integer, Integer> entry: votes.entrySet()){
+			resultMap.put(get(entry.getKey()), entry.getValue());
+		}
+		
+		return resultMap;
 	}
 }

@@ -6,9 +6,13 @@ angular.module('ResultCtrl', []).controller('ResultController', function($scope,
 			$rootScope.messageClass = "";
 			
 			$scope.restaurantMaps = res;
+			
+			console.log(res);
 		}).error(function(res, status, headers){
 			$rootScope.globalMessage = headers('message');
 			$rootScope.messageClass = "alert-danger";
  		});
 	};
+	
+	$scope.result();
 });

@@ -1,11 +1,14 @@
 package com.democratic.restaurant.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.democratic.restaurant.dao.RestaurantDao;
+import com.democratic.restaurant.datas.RestaurantData;
 import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
 
@@ -24,19 +27,22 @@ public class RestaurantService {
 	/**
 	 * @return A list with all restaurants
 	 */
-	public List<Restaurant> list() throws RestaurantException{
+	public List<RestaurantData> list() throws RestaurantException{
 		
 		List<Restaurant> restaurants = null;
+		List<RestaurantData> restaurantDatas = null;
 		
 		try {
 			restaurants = restaurantDao.list();
+			
+			restaurantDatas = buildRestaurantDatas(restaurants);
 		}catch(Exception e){
 			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE, e);
 		}
 		
-		validateListResult(restaurants);
+		validateListResult(restaurantDatas);
 		
-		return restaurants;
+		return restaurantDatas;
 	}
 	
 	/**
@@ -57,9 +63,38 @@ public class RestaurantService {
 	 * @param restaurants
 	 * @throws RestaurantException
 	 */
-	private void validateListResult(List<Restaurant> restaurants ) throws RestaurantException{
+	private void validateListResult(List<RestaurantData> restaurants ) throws RestaurantException{
 		if(restaurants == null){
 			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE);
 		}
+	}
+	
+	/**
+	 * @param map
+	 * @return
+	 */
+	public List<RestaurantData> buildRestaurantDatas(Map<Restaurant, Integer> map){
+		List<RestaurantData> datas = new ArrayList<RestaurantData>();
+		
+		for(Map.Entry<Restaurant, Integer> entry: map.entrySet()){
+			datas.add(new RestaurantData(entry.getKey(), entry.getValue()));
+		}
+		
+		return datas;
+	}
+	
+	
+	/**
+	 * @param restaurants
+	 * @return
+	 */
+	private List<RestaurantData> buildRestaurantDatas(List<Restaurant> restaurants){
+		List<RestaurantData> datas = new ArrayList<RestaurantData>();
+		
+		for(Restaurant restaurant: restaurants){
+			datas.add(new RestaurantData(restaurant));
+		}
+		
+		return datas;
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.democratic.restaurant.datas.RestaurantData;
 import com.democratic.restaurant.model.Restaurant;
 import com.democratic.restaurant.service.HelloWorldService;
 import com.democratic.restaurant.service.RestaurantService;
@@ -29,22 +30,6 @@ public class MainController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Map<String, Object> model) {
-
-		logger.debug("index() is executed!");
-
-		model.put("title", helloWorldService.getTitle(""));
-		model.put("msg", helloWorldService.getDesc());
-		
-		List<Restaurant> restaurants = null;
-		
-		try {
-			restaurants = restaurantService.list();
-		}catch(Exception e){
-			
-		}
-		
-		model.put("restaurants", restaurants);
-		
 		return "index";
 	}
 

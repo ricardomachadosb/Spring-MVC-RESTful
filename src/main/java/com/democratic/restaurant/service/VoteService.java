@@ -3,6 +3,7 @@ package com.democratic.restaurant.service;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,9 +12,11 @@ import org.springframework.stereotype.Service;
 
 import com.democratic.restaurant.dao.RestaurantDao;
 import com.democratic.restaurant.dao.UserDao;
+import com.democratic.restaurant.datas.RestaurantData;
 import com.democratic.restaurant.enums.VotingStatusEnum;
 import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
+import com.democratic.restaurant.utils.MapUtil;
 
 /**
  * @author ramachado
@@ -27,6 +30,9 @@ public class VoteService {
 	
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	RestaurantService restaurantService;
 	
 	private static VotingStatusEnum votingStatus =  VotingStatusEnum.OPENED;
 	
@@ -67,6 +73,25 @@ public class VoteService {
 	 */
 	public void finishVoting(){
 		votingStatus = VotingStatusEnum.CLOSED;
+	}
+	
+	/**
+	 * @return
+	 */
+	public List<RestaurantData> getResultList(){
+		Map<Restaurant, Integer> result = restaurantDao.getResultMap();
+		
+		result = orderResultMapByVotes(result);
+		return restaurantService.buildRestaurantDatas(result);
+	}
+	
+	/**
+	 * @param result
+	 * @return
+	 */
+	private Map<Restaurant, Integer> orderResultMapByVotes(Map<Restaurant, Integer> result){
+		Map<Restaurant, Integer> resultInOrder = MapUtil.sortByValue(result);
+		return resultInOrder;
 	}
 	
 	/**

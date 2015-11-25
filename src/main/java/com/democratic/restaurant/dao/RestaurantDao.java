@@ -1,6 +1,7 @@
 package com.democratic.restaurant.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.democratic.restaurant.model.Restaurant;
 
@@ -21,5 +22,7 @@ public interface RestaurantDao {
 	public void clearWeekWinnersHistory();
 	
 	public List<Restaurant> getWeekWinners();
+	
+	public Map<Restaurant, Integer> getResultMap();
 	
 }
