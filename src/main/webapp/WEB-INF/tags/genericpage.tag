@@ -5,14 +5,12 @@
 <%@attribute name="footer" fragment="true" %>
 <html>
 	<head>
-		<link rel="stylesheet" href=" <c:url value='/resources/css/bootstrap.min.css' />">
-		<link rel="stylesheet" href=" <c:url value='/resources/css/bootstrap-theme.min.css' />">
-		<link rel="stylesheet" href=" <c:url value='/resources/css/style.css' />">
-		<link rel="stylesheet" href=" <c:url value='/resources/css/fileinput.min.css' />">
-		<script src=" <c:url value='/resources/js/jquery-2.1.1.min.js' /> "></script>
-		<script src=" <c:url value='/resources/js/bootstrap.min.js' /> "></script>
-		<script src=" <c:url value='/resources/js/myscripts.js' /> "></script>
-		<script src=" <c:url value='/resources/js/fileinput.min.js' /> "></script>
+		<link rel="stylesheet" href=" <c:url value='/resources/core/libs/bootstrap/dist/css/bootstrap.min.css' />">
+		<link rel="stylesheet" href=" <c:url value='/resources/core/css/core.css' />">
+		
+		<script src=" <c:url value='/resources/core/libs/jquery/dist/jquery.min.js' /> "></script>
+		<script src=" <c:url value='/resources/core/libs/bootstrap/dist/js/bootstrap.min.js' /> "></script>
+		<script src=" <c:url value='/resources/core/js/core.js' /> "></script>
 		
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	</head>
@@ -34,7 +32,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="${contextPath}/">Veículos</a>
+		      <a class="navbar-brand" href="${contextPath}/">Restaurantes</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
