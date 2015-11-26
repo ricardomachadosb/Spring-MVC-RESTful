@@ -6,4 +6,7 @@
 	      <div class="progress-bar" style="width: {{restaurant.votesPercent}}%;"></div>
 	  </div>
   </div>
+   <p>
+    <a href="/" class="pull-right">Voltar para votação</a>
+  </p>
 </div>

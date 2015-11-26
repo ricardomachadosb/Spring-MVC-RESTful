@@ -1,6 +1,5 @@
 package com.democratic.restaurant.service;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +44,10 @@ public class VoteService {
 		
 		if(userAlreadyVoted(auth.getName())){
 			throw new RestaurantException("Você ja votou hoje");
+		}
+		
+		if(votingIsClosed()){
+			throw new RestaurantException("Votação encerrada");
 		}
 		
 		restaurantDao.vote(restaurant);
@@ -114,5 +117,12 @@ public class VoteService {
     	Calendar calendar = Calendar.getInstance();
     	int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
     	return (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.MONDAY || restaurantDao.getWeekWinners().size() >= 6);
+    }
+    
+    /**
+     * @return
+     */
+    public boolean votingIsClosed(){
+    	return votingStatus.equals(VotingStatusEnum.CLOSED);
     }
 }

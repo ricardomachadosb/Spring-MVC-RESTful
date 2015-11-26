@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $rootScope) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $rootScope, $location) {
 	
 	$scope.formData = {};
 		
@@ -9,8 +9,12 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			
 			$scope.restaurants = res;
 		}).error(function(res, status, headers){
-			$rootScope.globalMessage = headers('message');
-			$rootScope.messageClass = "alert-danger";
+			if(status == 400){
+				$location.path("result")
+			}else{
+				$rootScope.globalMessage = headers('message');
+				$rootScope.messageClass = "alert-danger";
+			}
  		});
 	};
 	  

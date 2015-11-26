@@ -33,25 +33,34 @@ public class RestaurantController {
 	@Autowired
 	private VoteService voteService;
 	
+	private String DEFAULT_VOTING_CLOSED_MESSAGE = "Votação encerrada";
+	
 	/**
 	 * @return
 	 */
 	@RequestMapping(value = "/api/restaurant/list", method = RequestMethod.GET, produces={"application/json;charset=UTF-8"})
 	public ResponseEntity<List<RestaurantData>> listAllRestaurants() {
 		
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		
+		if(voteService.votingIsClosed()){
+			headers.add("message", DEFAULT_VOTING_CLOSED_MESSAGE);
+			return new ResponseEntity<List<RestaurantData>>(headers, HttpStatus.BAD_REQUEST);
+		}
+		
 		List<RestaurantData> restaurants = null;
+		
 		try {
 			restaurants = restaurantService.list();
 		}catch(Exception e){
-			MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 			headers.add("message", e.getMessage());
 			return new ResponseEntity<List<RestaurantData>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
-			
 		}
 		
 		if (restaurants.isEmpty()) {
 			return new ResponseEntity<List<RestaurantData>>(HttpStatus.NO_CONTENT);
 		}
+		
 		return new ResponseEntity<List<RestaurantData>>(restaurants, HttpStatus.OK);
 	}
 	
@@ -62,10 +71,15 @@ public class RestaurantController {
 	public ResponseEntity<List<RestaurantData>> result() {
 		
 		List<RestaurantData> restaurants = null;
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		
+		if(voteService.votingIsClosed()){
+			headers.add("message", DEFAULT_VOTING_CLOSED_MESSAGE);
+		}
+		
 		try {
 			restaurants = voteService.getResultList();
 		}catch(Exception e){
-			MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 			headers.add("message", e.getMessage());
 			return new ResponseEntity<List<RestaurantData>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -73,7 +87,8 @@ public class RestaurantController {
 		if (restaurants.isEmpty()) {
 			return new ResponseEntity<List<RestaurantData>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<RestaurantData>>(restaurants, HttpStatus.OK);
+		
+		return new ResponseEntity<List<RestaurantData>>(restaurants, headers, HttpStatus.OK);
 	}
 	
 	/**
