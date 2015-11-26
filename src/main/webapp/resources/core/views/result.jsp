@@ -1,14 +1,9 @@
 <div class="span6">
   <h5>Resultado</h5>
-  <div ng-repeat="restaurantMap in restaurantMaps">
-	  <strong>Mac</strong><span class="pull-right">40%</span>
+  <div ng-repeat="restaurant in restaurants">
+	  <strong>{{restaurant.name}}</strong><span class="pull-right">{{restaurant.votes}} Votos</span>
 	  <div class="progress progress-info active">
-	      <div class="progress-bar" style="width: 40%;"></div>
+	      <div class="progress-bar" style="width: {{restaurant.votesPercent}}%;"></div>
 	  </div>
   </div>
-  
-  	  <strong>Mac</strong><span class="pull-right">40%</span>
-	  <div class="progress progress-info active">
-	      <div class="progress-bar" style="width: 40%;"></div>
-	  </div>
 </div>

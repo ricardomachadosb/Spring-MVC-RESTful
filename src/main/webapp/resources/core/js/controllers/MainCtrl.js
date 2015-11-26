@@ -8,7 +8,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			$rootScope.messageClass = "";
 			
 			$scope.restaurants = res;
-			console.log(res);
 		}).error(function(res, status, headers){
 			$rootScope.globalMessage = headers('message');
 			$rootScope.messageClass = "alert-danger";

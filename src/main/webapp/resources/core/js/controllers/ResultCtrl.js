@@ -5,9 +5,8 @@ angular.module('ResultCtrl', []).controller('ResultController', function($scope,
     		$rootScope.globalMessage = "";
 			$rootScope.messageClass = "";
 			
-			$scope.restaurantMaps = res;
+			$scope.restaurants = res;
 			
-			console.log(res);
 		}).error(function(res, status, headers){
 			$rootScope.globalMessage = headers('message');
 			$rootScope.messageClass = "alert-danger";

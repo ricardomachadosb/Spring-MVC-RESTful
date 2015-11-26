@@ -2,6 +2,10 @@ package com.democratic.restaurant.datas;
 
 import com.democratic.restaurant.model.Restaurant;
 
+/**
+ * @author Ricardo Machado
+ *
+ */
 public class RestaurantData {
 	
 	private int id;
@@ -9,6 +13,8 @@ public class RestaurantData {
 	private String name;
 	
 	private Integer votes;
+	
+	private Integer votesPercent;
 	
 	public RestaurantData() {}
 	
@@ -44,5 +50,13 @@ public class RestaurantData {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public Integer getVotesPercent() {
+		return votesPercent;
+	}
+
+	public void setVotesPercent(Integer votesPercent) {
+		this.votesPercent = votesPercent;
 	}
 }

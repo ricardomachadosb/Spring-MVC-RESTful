@@ -80,7 +80,24 @@ public class RestaurantService {
 			datas.add(0,new RestaurantData(entry.getKey(), entry.getValue()));
 		}
 		
+		populateVotesPercent(datas);
+		
 		return datas;
+	}
+	
+	/**
+	 * @param datas
+	 */
+	private void populateVotesPercent(List<RestaurantData> datas){
+		Integer totalVotes = 0;
+		
+		for(RestaurantData data: datas){
+			totalVotes += data.getVotes();
+		}
+		
+		for(RestaurantData data: datas){
+			data.setVotesPercent((data.getVotes() * 100) / totalVotes);
+		}
 	}
 	
 	
