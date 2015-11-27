@@ -27,7 +27,7 @@ public class RestaurantService {
 	/**
 	 * @return A list with all restaurants
 	 */
-	public List<RestaurantData> list() throws RestaurantException{
+	public List<RestaurantData> listDatas() throws RestaurantException{
 		
 		List<Restaurant> restaurants = null;
 		List<RestaurantData> restaurantDatas = null;

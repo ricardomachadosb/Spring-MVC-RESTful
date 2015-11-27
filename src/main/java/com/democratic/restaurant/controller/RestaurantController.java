@@ -51,7 +51,7 @@ public class RestaurantController {
 		List<RestaurantData> restaurants = null;
 		
 		try {
-			restaurants = restaurantService.list();
+			restaurants = restaurantService.listDatas();
 		}catch(Exception e){
 			headers.add("message", e.getMessage());
 			return new ResponseEntity<List<RestaurantData>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -105,6 +105,9 @@ public class RestaurantController {
 			headers.add("message", "Você votou no restaurante " + restaurant.getName());
 		}catch(RestaurantException e){
 			headers.add("message", e.getMessage());
+			return new ResponseEntity<Restaurant>(headers, HttpStatus.BAD_REQUEST);
+		}catch(Exception e){
+			headers.add("message", "Ocorreu um erro não previsto");
 			return new ResponseEntity<Restaurant>(headers, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Restaurant>(headers, HttpStatus.OK);
