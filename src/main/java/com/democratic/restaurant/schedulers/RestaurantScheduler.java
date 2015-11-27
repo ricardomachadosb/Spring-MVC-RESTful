@@ -33,6 +33,6 @@ public class RestaurantScheduler {
     
     @Scheduled(cron="0 0 11 * * ?")
     public void finishVoting(){
-    	voteService.finishVoting();;
+    	voteService.finishVoting();
     }
 }

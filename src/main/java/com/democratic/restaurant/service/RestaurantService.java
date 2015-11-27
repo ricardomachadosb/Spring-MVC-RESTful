@@ -35,6 +35,8 @@ public class RestaurantService {
 		try {
 			restaurants = restaurantDao.list();
 			
+			restaurants.removeAll(restaurantDao.getWeekWinners());
+			
 			restaurantDatas = buildRestaurantDatas(restaurants);
 		}catch(Exception e){
 			throw new RestaurantException(LIST_DEFAULT_ERROR_MESSAGE, e);

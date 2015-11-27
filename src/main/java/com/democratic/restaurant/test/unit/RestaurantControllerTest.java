@@ -101,7 +101,7 @@ public class RestaurantControllerTest {
 	@Test
 	public void resultTest() throws Exception{
 		
-		Mockito.when(voteService.getResultList()).thenReturn(restaurants);
+		Mockito.when(voteService.getResultListData()).thenReturn(restaurants);
 		
 		mockMvc.perform(get("/api/restaurant/result")).andExpect(status().isOk())
 		.andExpect(content().contentType("application/json;charset=UTF-8"))
@@ -112,7 +112,7 @@ public class RestaurantControllerTest {
 	@Test
 	public void resultEmptyTest() throws Exception{
 		
-		Mockito.when(voteService.getResultList()).thenReturn(new ArrayList<RestaurantData>());
+		Mockito.when(voteService.getResultListData()).thenReturn(new ArrayList<RestaurantData>());
 		
 		mockMvc.perform(get("/api/restaurant/result")).andExpect(status().isNoContent())
 		.andExpect(content().contentType("application/json;charset=UTF-8"));

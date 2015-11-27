@@ -32,7 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.withUser("ricardo2").password("ricardo").roles("user").and()
 		.withUser("ricardo3").password("ricardo").roles("user").and()
 		.withUser("ricardo4").password("ricardo").roles("user").and()
-		.withUser("ricardo5").password("ricardo").roles("user");
+		.withUser("ricardo5").password("ricardo").roles("user").and()
+		.withUser("ricardo6").password("ricardo").roles("user").and()
+		.withUser("ricardo7").password("ricardo").roles("user").and()
+		.withUser("ricardo8").password("ricardo").roles("user").and()
+		.withUser("ricardo9").password("ricardo").roles("user").and()
+		.withUser("ricardo10").password("ricardo").roles("user").and()
+		.withUser("ricardo11").password("ricardo").roles("user").and()
+		.withUser("ricardo12").password("ricardo").roles("user").and()
+		.withUser("ricardo13").password("ricardo").roles("user").and()
+		.withUser("ricardo14").password("ricardo").roles("user").and();
+		
 	}
 
 	/**

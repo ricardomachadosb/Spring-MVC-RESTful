@@ -1,8 +1,10 @@
 package com.democratic.restaurant.service;
 
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,6 +17,7 @@ import com.democratic.restaurant.datas.RestaurantData;
 import com.democratic.restaurant.enums.VotingStatusEnum;
 import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
+import com.democratic.restaurant.utils.DateUtils;
 import com.democratic.restaurant.utils.MapUtil;
 
 /**
@@ -76,12 +79,54 @@ public class VoteService {
 	 */
 	public void finishVoting(){
 		votingStatus = VotingStatusEnum.CLOSED;
+		Restaurant restaurantWinner = getWinner();
+		
+		if(restaurantWinner != null){
+			restaurantDao.addWeekWinner(restaurantWinner);
+		}
+		
+		if(DateUtils.isSunday()){
+			restaurantDao.clearWeekWinnersHistory();
+		}
 	}
 	
 	/**
 	 * @return
 	 */
-	public List<RestaurantData> getResultList(){
+	private Restaurant getWinner(){
+		
+		Restaurant winner = null;
+		
+		Map<Restaurant, Integer> result = restaurantDao.getResultMap();
+		result = orderResultMapByVotes(result);
+		if(existsValidWinner(result)){
+			winner = result.entrySet().iterator().next().getKey();
+		}
+		
+		return winner;
+	}
+	
+	/**
+	 * @param orderedResult
+	 * @return
+	 */
+	private boolean existsValidWinner(Map<Restaurant, Integer> orderedResult){
+		
+		boolean isValid = false;
+		if(orderedResult.size() == 1){
+			return true;
+		}else if(orderedResult.size() > 1){
+			Iterator<Entry<Restaurant, Integer>> iterator = orderedResult.entrySet().iterator();
+			isValid = iterator.next().getValue() > iterator.next().getValue();
+		}
+		
+		return isValid;
+	}
+	
+	/**
+	 * @return
+	 */
+	public List<RestaurantData> getResultListData(){
 		Map<Restaurant, Integer> result = restaurantDao.getResultMap();
 		result = orderResultMapByVotes(result);
 		return restaurantService.buildRestaurantDatas(result);

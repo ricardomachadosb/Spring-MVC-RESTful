@@ -79,7 +79,7 @@ public class RestaurantController {
 		}
 		
 		try {
-			restaurants = voteService.getResultList();
+			restaurants = voteService.getResultListData();
 		}catch(Exception e){
 			headers.add("message", e.getMessage());
 			return new ResponseEntity<List<RestaurantData>>(headers, HttpStatus.INTERNAL_SERVER_ERROR);

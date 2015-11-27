@@ -111,4 +111,9 @@ public class RestaurantDaoMockedImpl implements RestaurantDao{
 		
 		return resultMap;
 	}
+
+	@Override
+	public void addWeekWinner(Restaurant restaurant) {
+		weekWinners.add(restaurant);
+	}
 }

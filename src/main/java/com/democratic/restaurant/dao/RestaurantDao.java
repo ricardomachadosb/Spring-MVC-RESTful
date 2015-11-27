@@ -25,4 +25,6 @@ public interface RestaurantDao {
 	
 	public Map<Restaurant, Integer> getResultMap();
 	
+	public void addWeekWinner(Restaurant restaurant);
+	
 }
