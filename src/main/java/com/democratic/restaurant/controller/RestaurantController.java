@@ -1,5 +1,6 @@
 package com.democratic.restaurant.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -85,7 +86,7 @@ public class RestaurantController {
 		}
 		
 		if (restaurants.isEmpty()) {
-			return new ResponseEntity<List<RestaurantData>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<RestaurantData>>(new ArrayList<RestaurantData>(), HttpStatus.NO_CONTENT);
 		}
 		
 		return new ResponseEntity<List<RestaurantData>>(restaurants, headers, HttpStatus.OK);

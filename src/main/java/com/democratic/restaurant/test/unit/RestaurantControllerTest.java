@@ -1,7 +1,7 @@
 package com.democratic.restaurant.test.unit;
 import static org.hamcrest.CoreMatchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,7 +25,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.democratic.restaurant.config.SpringWebConfig;
 import com.democratic.restaurant.controller.RestaurantController;
 import com.democratic.restaurant.datas.RestaurantData;
-import com.democratic.restaurant.exception.RestaurantException;
 import com.democratic.restaurant.model.Restaurant;
 import com.democratic.restaurant.service.RestaurantService;
 import com.democratic.restaurant.service.VoteService;
@@ -63,10 +62,14 @@ public class RestaurantControllerTest {
 		RestaurantData restaurantData1 = new RestaurantData();
 		restaurantData1.setId(1);
 		restaurantData1.setName("name 1");
+		restaurantData1.setVotes(1);
+		restaurantData1.setVotesPercent(50);
 		
 		RestaurantData restaurantData2 = new RestaurantData();
 		restaurantData2.setId(2);
 		restaurantData2.setName("name 2");
+		restaurantData2.setVotes(1);
+		restaurantData2.setVotesPercent(50);
 		
 		restaurants.add(restaurantData1);
 		restaurants.add(restaurantData2);
@@ -95,7 +98,24 @@ public class RestaurantControllerTest {
 		mockMvc.perform(put("/api/restaurant/vote/2")).andExpect(status().isInternalServerError());
 	}
 	
-//	public void resultTest(){
-//		
-//	}
+	@Test
+	public void resultTest() throws Exception{
+		
+		Mockito.when(voteService.getResultList()).thenReturn(restaurants);
+		
+		mockMvc.perform(get("/api/restaurant/result")).andExpect(status().isOk())
+		.andExpect(content().contentType("application/json;charset=UTF-8"))
+		.andExpect(jsonPath("$[0].votesPercent", is(50)));
+		
+	}
+	
+	@Test
+	public void resultEmptyTest() throws Exception{
+		
+		Mockito.when(voteService.getResultList()).thenReturn(new ArrayList<RestaurantData>());
+		
+		mockMvc.perform(get("/api/restaurant/result")).andExpect(status().isNoContent())
+		.andExpect(content().contentType("application/json;charset=UTF-8"));
+		
+	}
 }
