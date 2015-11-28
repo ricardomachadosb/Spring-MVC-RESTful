@@ -4,7 +4,7 @@
      <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-arrow-right"></span>Em qual restaurante vocÃª deseja ir hoje?
+                    <span class="glyphicon glyphicon-arrow-right"></span>Em qual restaurante você deseja ir hoje?
                 </h3>
             </div>
              <form>
