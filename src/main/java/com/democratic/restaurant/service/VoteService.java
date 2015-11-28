@@ -94,7 +94,6 @@ public class VoteService {
 	 * @return
 	 */
 	private Restaurant getWinner(){
-		
 		Restaurant winner = null;
 		
 		Map<Restaurant, Integer> result = restaurantDao.getResultMap();
@@ -111,8 +110,8 @@ public class VoteService {
 	 * @return
 	 */
 	private boolean existsValidWinner(Map<Restaurant, Integer> orderedResult){
-		
 		boolean isValid = false;
+		
 		if(orderedResult.size() == 1){
 			return true;
 		}else if(orderedResult.size() > 1){
@@ -154,17 +153,8 @@ public class VoteService {
 	public void clearWeekWinnersHistory(){
 		restaurantDao.clearWeekWinnersHistory();
 	}
-	
-    /**
-     * @return
-     */
-    public boolean shouldDeleteWeekWinnersHistory(){
-    	Calendar calendar = Calendar.getInstance();
-    	int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-    	return (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.MONDAY || restaurantDao.getWeekWinners().size() >= 6);
-    }
-    
-    /**
+
+	/**
      * @return
      */
     public boolean votingIsClosed(){

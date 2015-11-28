@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 
 import com.democratic.restaurant.service.VoteService;
 
+
 /**
- * @author ramachado
+ * @author Ricardo Machado
  *
  */
 @EnableScheduling
@@ -25,10 +26,6 @@ public class RestaurantScheduler {
     @Scheduled(cron="0 0 6 * * ?")
     public void startNewVote(){
     	voteService.startNewVote();
-    	
-    	if(voteService.shouldDeleteWeekWinnersHistory()){
-    		voteService.clearWeekWinnersHistory();
-    	}
     }
     
     @Scheduled(cron="0 0 11 * * ?")
