@@ -21,14 +21,14 @@ How to RUN
 * [Install Gradle](https://docs.gradle.org/current/userguide/installation.html)
 * [Install Bower globally](http://bower.io/)
 * [Clone this project](https://help.github.com/articles/cloning-a-repository/)
-* Go to project root folder and execute the command: ```bash $bower install ```
-* Still on root project folder run ```bash $gradle jettyRun ```
+* Go to project root folder and execute the command: ```$bower install ```
+* Still on root project folder run ```$gradle jettyRun ```
 * Open your web browser and access [localhost:8080](http://localhost:8080/)
 
 You can login with username "ricardo" and password "ricardo".
 You can find/add more in memory users at SecurityConfig.java file
 
-if you want to import the project in eclipse run ```bash $gradle eclipse ``` at project root folder
+if you want to import the project in eclipse run ```$gradle eclipse ``` at project root folder
 
 no database needed.
 
