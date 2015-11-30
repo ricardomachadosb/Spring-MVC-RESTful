@@ -28,7 +28,7 @@ How to RUN
 You can login with username "ricardo" and password "ricardo".
 You can find/add more in memory users at SecurityConfig.java file.
 
-if you want to import the project in eclipse run ```$gradle eclipse ``` at project root folder.
+If you want to import the project in eclipse run ```$gradle eclipse ``` at project root folder.
 
 no database needed.
 
