@@ -26,9 +26,9 @@ How to RUN
 * Open your web browser and access [localhost:8080](http://localhost:8080/)
 
 You can login with username "ricardo" and password "ricardo".
-You can find/add more in memory users at SecurityConfig.java file
+You can find/add more in memory users at SecurityConfig.java file.
 
-if you want to import the project in eclipse run ```$gradle eclipse ``` at project root folder
+if you want to import the project in eclipse run ```$gradle eclipse ``` at project root folder.
 
 no database needed.
 
