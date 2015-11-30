@@ -17,6 +17,10 @@ import com.democratic.restaurant.model.Restaurant;
 import com.democratic.restaurant.service.HelloWorldService;
 import com.democratic.restaurant.service.RestaurantService;
 
+/**
+ * @author Ricardo Machado
+ *
+ */
 @Controller
 public class MainController {
 
@@ -32,20 +36,4 @@ public class MainController {
 	public String index(Map<String, Object> model) {
 		return "index";
 	}
-
-	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
-	public ModelAndView hello(@PathVariable("name") String name) {
-
-		logger.debug("hello() is executed - $name {}", name);
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName("index");
-		
-		model.addObject("title", helloWorldService.getTitle(name));
-		model.addObject("msg", helloWorldService.getDesc());
-		
-		return model;
-
-	}
-
 }

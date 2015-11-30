@@ -6,6 +6,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
 
+/**
+ * @author Ricardo Machado
+ *
+ */
 public class MapUtil {
 
 	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(

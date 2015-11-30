@@ -1,7 +1,7 @@
 package com.democratic.restaurant.enums;
 
 /**
- * @author ramachado
+ * @author Ricardo Machado
  *
  */
 public enum VotingStatusEnum {

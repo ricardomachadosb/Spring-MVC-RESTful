@@ -85,7 +85,7 @@ public class VoteService {
 			restaurantDao.addWeekWinner(restaurantWinner);
 		}
 		
-		if(DateUtils.isSunday()){
+		if(DateUtils.isSunday() || restaurantDao.getWeekWinners().size() >= 6){
 			restaurantDao.clearWeekWinnersHistory();
 		}
 	}
